@@ -1,14 +1,12 @@
-// data-55.02.00.js
 const BASE_55_02_00_DATA = {
   version: "Base 55.02.00",
-  generalNote: "In 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). This was upgraded to fully supported (Yes) in version 55.01.01+",
   brands: {
     "Bennett": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates.",
       platforms: {
         "SSP (Simply Secure Payment)": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
-          supportedOptionsHeader: "Recommended Minimum Version",
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "EMV", minimumVersion: "XXXXXX.10.10.07" }
           ],
@@ -18,7 +16,7 @@ const BASE_55_02_00_DATA = {
           ]
         },
         "DCA": {
-          supportedOptionsHeader: "Recommended Minimum Version",
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Non-debit", minimumVersion: "N/A" }
           ],
@@ -61,13 +59,17 @@ const BASE_55_02_00_DATA = {
       platforms: {
         "FlexPay IV (M7)": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
-          supportedOptionsHeader: "Recommended Minimum UPM Bundle",
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
-            { option: "EMV (PCI DSS 5.0)", minimumVersion: "52.12.45" },
-            { option: "EMV (PCI DSS 4.0)", minimumVersion: "42.12.45" },
+            { option: "EMV (PCI DSS 5.0) Non-Fleet 2.0", minimumVersion: "52.12.45" },
+            { option: "EMV (PCI DSS 4.0) Non-Fleet 2.0", minimumVersion: "42.12.45" },
+            { option: "Fleet 2.0 Version (PCI DSS 5.0)", minimumVersion: "FPIVOPT_V05.13.10_US00.07" },
+            { option: "Fleet 2.0 Version (PCI DSS 4.0)", minimumVersion: "FPIVOPT_V04.13.10_US00.07" },
+            { option: "Fleet 2.0 VIPA", minimumVersion: "6.8.2.32 (For Chevron sites, see note below.)" },
             { option: "Graphics", minimumVersion: "42.05.11 - P609" },
             { option: "Applause (Graphics)", minimumVersion: "42.05.11 - P609" },
             { option: "Cash Acceptors", minimumVersion: "42.05.11 - P609" },
+            { option: "Scanner", minimumVersion: "" },
             { option: "Contactless (RFID) with UX 400", minimumVersion: "42.05.11 - P609" }
           ],
           debit: [
@@ -75,6 +77,7 @@ const BASE_55_02_00_DATA = {
             { option: "TDES", minimumVersion: "42.05.11 - P609" }
           ],
           notes: [
+            "For Chevron sites, they should use 6.8.2.25-x VIPA. Chevron is not certified for 6.8.2.32. The version to load would be xx.13.10_US00.05. (xx - being the PCI of the dispenser > PCI 4 being 04 and PCI 5 would be 05. For the version to load, PCI 4.0 would be 42 and PCI 5.0 would be 52.)",
             "If the site has FlexPay IV v42.11.47 or v52.11.47 and debit transactions are receiving an \"INVALID PIN\" response from the host, Gilbarco has corrected this with the v42.11.53 and v52.11.53 software releases.",
             "Cash Acceptors are not supported with EMV.",
             "GSM, SDES, and Master Session are not supported."
@@ -173,10 +176,6 @@ const BASE_55_02_00_DATA = {
     },
     "Invenco by GVR": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications.",
-      compatibilityNotes: [
-        "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
-        "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01+."
-      ],
       platforms: {
         "FlexPay 6 Outdoor Payment Terminals": {
           models: [
@@ -189,14 +188,8 @@ const BASE_55_02_00_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
-            { option: "EMV Firmware (Non-Fleet 2.0)", minimumVersion: "3.2.21" },
-            { option: "EMV Adapter (Non-Fleet 2.0)", minimumVersion: "1.06.0159" },
-            { option: "EMV Firmware (Supports Visa Fleet 2.0 Support)", minimumVersion: "R3.2.28c" },
-            { option: "EMV Adapter (Supports Visa Fleet 2.0 Support)", minimumVersion: "01.08.0132" }
-          ],
-          notes: [
-            "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
-            "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01."
+            { option: "EMV Firmware", minimumVersion: "3.2.21" },
+            { option: "EMV Adapter", minimumVersion: "1.06.0159" }
           ]
         }
       }
