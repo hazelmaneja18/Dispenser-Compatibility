@@ -256,6 +256,17 @@ const BASE_55_02_01_DATA = {
         { modelMatch: [], dispenser: "SC-82", description: "Dispenser", version: "See second note below" }
       ],
       platforms: {
+        "Visa Fleet 2.0 / WEX 4.1 Certification": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [
+            { option: "Visa Fleet 2.0 / WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
+            { option: "ANTX", minimumVersion: "1.22.5.326" }
+          ],
+          notes: [
+            "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
+            "Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne."
+          ]
+        },
         "iX Pay 2, 3.1 Series": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           emvStatus: [
