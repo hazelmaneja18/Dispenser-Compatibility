@@ -203,13 +203,13 @@
           <option value="54.02.01">Base 54.02.01</option>
           <option value="54.02.02">Base 54.02.02</option>
           <option value="54.02.03">Base 54.02.03</option>
-          <option value="54.02.03">Base 54.02.04</option>
-          <option value="54.02.03">Base 54.02.05</option>
-          <option value="55.00.00">Base 55.00.01</option>
-          <option value="55.01.01">Base 55.00.01</option>
+          <option value="54.02.04">Base 54.02.04</option>
+          <option value="54.02.05">Base 54.02.05</option>
+          <option value="55.00.00">Base 55.00.00</option>
+          <option value="55.00.01">Base 55.00.01</option>
           <option value="55.01.01">Base 55.01.01</option>
-          <option value="55.01.01">Base 55.02.00</option>
-          <option value="55.01.01">Base 55.02.01</option>
+          <option value="55.02.00">Base 55.02.00</option>
+          <option value="55.02.01">Base 55.02.01</option>
         </select>
       </div>
 
@@ -245,7 +245,6 @@
   <script src="data-55.02.00.js"></script>
   <script src="data-55.02.01.js"></script>
 
-
   <script>
     const versionDataMap = {
       "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
@@ -253,10 +252,10 @@
       "54.02.01": typeof BASE_54_02_01_DATA !== 'undefined' ? BASE_54_02_01_DATA : null,
       "54.02.02": typeof BASE_54_02_02_DATA !== 'undefined' ? BASE_54_02_02_DATA : null,
       "54.02.03": typeof BASE_54_02_03_DATA !== 'undefined' ? BASE_54_02_03_DATA : null,
-      "54.02.03": typeof BASE_54_02_04_DATA !== 'undefined' ? BASE_54_02_04_DATA : null,
-      "54.02.03": typeof BASE_54_02_05_DATA !== 'undefined' ? BASE_54_02_05_DATA : null,
-      "55.01.01": typeof BASE_55_00_00_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
-      "55.01.01": typeof BASE_55_00_01_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
+      "54.02.04": typeof BASE_54_02_04_DATA !== 'undefined' ? BASE_54_02_04_DATA : null,
+      "54.02.05": typeof BASE_54_02_05_DATA !== 'undefined' ? BASE_54_02_05_DATA : null,
+      "55.00.00": typeof BASE_55_00_00_DATA !== 'undefined' ? BASE_55_00_00_DATA : null,
+      "55.00.01": typeof BASE_55_00_01_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
       "55.01.01": typeof BASE_55_01_01_DATA !== 'undefined' ? BASE_55_01_01_DATA : null,
       "55.02.00": typeof BASE_55_02_00_DATA !== 'undefined' ? BASE_55_02_00_DATA : null,
       "55.02.01": typeof BASE_55_02_01_DATA !== 'undefined' ? BASE_55_02_01_DATA : null
@@ -362,13 +361,15 @@
         html += `</tbody></table>`;
       }
 
-      // EMV Certification
-      if (platformData.emvCertification) {
+      // EMV Support / EMV Certification Section
+      const emvData = platformData.emvSupport || platformData.emvCertification;
+      if (emvData) {
+        const emvHeader = platformData.emvSupport ? "EMV Support" : "EMV Certification";
         html += `
           <table>
-            <tr><th colspan="2">EMV Certification</th></tr>
-            <tr><td>EMV Contact</td><td>${platformData.emvCertification.contact}</td></tr>
-            <tr><td>EMV Contactless</td><td>${platformData.emvCertification.contactless}</td></tr>
+            <tr><th colspan="2">${emvHeader}</th></tr>
+            <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
+            <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
           </table>`;
       }
 
@@ -415,11 +416,12 @@
 
       // Debit Section
       if (platformData.debit) {
+        const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
         html += `<div class="header-black">Debit</div>`;
         html += `
           <table>
             <thead>
-              <tr><th>Supported Options</th><th>Recommended Minimum Version</th></tr>
+              <tr><th>Supported Options</th><th>${header}</th></tr>
             </thead>
             <tbody>`;
         platformData.debit.forEach(row => {
@@ -485,4 +487,4 @@
     }
   </script>
 </body>
-</html> 
+</html>
