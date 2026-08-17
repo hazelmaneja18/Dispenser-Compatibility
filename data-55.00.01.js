@@ -171,7 +171,7 @@ const BASE_55_00_01_DATA = {
         }
       }
     },
-"Invenco by GVR": {
+    "Invenco by GVR": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications.",
       platforms: {
         "FlexPay 6 Outdoor Payment Terminals": {
