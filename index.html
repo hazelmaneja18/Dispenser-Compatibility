@@ -2,489 +2,230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fuel Hardware Peripherals Compatibility</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base 55.02.01 Platform Compatibility Dashboard</title>
   <style>
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-      margin: 0; 
-      padding: 40px 15px; 
-      background-color: #f1f5f9;
-      color: #334155;
-      display: flex;
-      justify-content: center;
+    :root {
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+      
+      /* Status Colors */
+      --certified-bg: #ecfdf5;
+      --certified-text: #047857;
+      --certified-border: #10b981;
+      --certified-glow: rgba(16, 185, 129, 0.25);
+      
+      --disabled-bg: #fef2f2;
+      --disabled-text: #b91c1c;
+      --disabled-border: #f87171;
+      
+      --primary-accent: #2563eb;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      margin: 0;
+      padding: 24px;
+      line-height: 1.5;
     }
 
     .container {
-      width: 100%;
-      max-width: 950px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .card { 
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-      padding: 28px 32px; 
-      color: #ffffff; 
-      border-radius: 10px 10px 0 0; 
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border-color);
     }
 
-    .brand-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 8px;
-    }
-
-    .vf-logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      background: transparent;
-    }
-
-    .card h2 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-    }
-
-    .card p {
-      margin: 6px 0 0 0;
-      color: #94a3b8;
-      font-size: 13.5px;
-      font-weight: 400;
-    }
-
-    .controls { 
-      background: #ffffff; 
-      padding: 24px 32px; 
-      display: flex; 
-      gap: 24px; 
-      border: 1px solid #e2e8f0;
-      border-top: none;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    }
-
-    .control-group {
-      flex: 1;
-    }
-
-    .control-group label {
-      font-size: 11px;
+    h1 {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #64748b;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      color: var(--text-main);
+      margin: 0 0 8px 0;
     }
 
-    select { 
-      padding: 10px 12px; 
-      width: 100%; 
-      margin-top: 8px;
-      border: 1px solid #cbd5e1;
+    .meta-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 8px 12px;
       border-radius: 6px;
-      box-sizing: border-box;
-      background-color: #f8fafc;
-      color: #1e293b;
-      font-size: 13.5px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      border-left: 4px solid var(--primary-accent);
     }
 
-    select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-    }
-
-    select:disabled {
-      background-color: #f1f5f9;
-      color: #94a3b8;
-      cursor: not-allowed;
-    }
-
-    .display-area { 
-      margin-top: 24px; 
-      background: #ffffff;
-      padding: 24px;
+    .brand-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      margin-bottom: 20px; 
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-accent);
     }
 
-    th, td { 
-      border: 1px solid #cbd5e1; 
-      padding: 10px 14px; 
-      text-align: left; 
-      font-size: 13px;
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 16px;
     }
 
-    th { 
-      background-color: #00ffcc; 
-      color: #0f172a; 
-      font-weight: 700;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
     }
 
-    .header-black { 
-      background-color: #0f172a; 
-      color: #ffffff; 
-      padding: 10px 14px; 
-      font-weight: 600; 
-      text-align: center; 
-      font-size: 14px;
-      margin-top: 20px;
-      margin-bottom: 0;
-      border-radius: 4px 4px 0 0;
-      letter-spacing: 0.02em;
+    th {
+      background-color: #f8fafc;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border-color);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
     }
 
-    .note-box { 
-      background-color: #f8fafc; 
-      padding: 14px 16px; 
-      border-left: 4px solid #0284c7; 
-      border-top: 1px solid #e2e8f0;
-      border-right: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 20px; 
-      font-size: 13px;
-      line-height: 1.5;
-      color: #334155;
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
     }
 
-    .note-box ul {
-      margin: 0;
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    /* Glowing Certified Badge */
+    .status-certified {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--certified-bg);
+      color: var(--certified-text);
+      border: 1px solid var(--certified-border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      box-shadow: 0 0 8px var(--certified-glow);
+    }
+
+    .status-certified::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--certified-border);
+      box-shadow: 0 0 6px var(--certified-border);
+    }
+
+    /* Soft Red Disabled/Not Supported Badge */
+    .status-disabled {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--disabled-bg);
+      color: var(--disabled-text);
+      border: 1px solid var(--disabled-border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+
+    .notes-list {
+      margin: 12px 0 0 0;
       padding-left: 20px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
     }
 
-    .note-box li {
+    .notes-list li {
       margin-bottom: 4px;
-    }
-
-    .note-box li:last-child {
-      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <div class="card">
-      <div class="brand-header">
-        <div class="vf-logo-container">
-          <svg width="140" height="30" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="14" r="5" fill="#ffffff"/>
-            <circle cx="12" cy="32" r="5" fill="#ffffff"/>
-            <circle cx="28" cy="48" r="5" fill="#ffffff"/>
-            <circle cx="44" cy="14" r="5" fill="#ffffff"/>
-            <circle cx="44" cy="32" r="5" fill="#ffffff"/>
-            <path d="M 44 14 Q 39 23 44 32" stroke="#ffffff" stroke-width="8" fill="none"/>
-            <text x="68" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="34" fill="#ffffff" letter-spacing="-1">verifone</text>
-          </svg>
-        </div>
-        <h2>Fuel Hardware Peripherals Compatibility</h2>
+    <header>
+      <h1>Base 55.02.01 Platform Compatibility</h1>
+      <div class="meta-note">
+        <strong>General Note:</strong> Shell support for Invenco dispensers is upgraded to fully supported (Yes) in version 55.01.01+.
       </div>
-      <p>Verifone Commander Recommended Minimum Firmware/Software Lookup</p>
+    </header>
+
+    <!-- Example Brand Section -->
+    <div class="brand-section">
+      <h2 class="brand-title">Dresser/Wayne</h2>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Platform / Option</th>
+              <th>EMV Contact</th>
+              <th>EMV Contactless</th>
+              <th>Minimum Version</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>iX Pay 2, 3.1 Series</strong></td>
+              <td><span class="status-certified">Certified</span></td>
+              <td><span class="status-certified">Certified</span></td>
+              <td>3.1.203.1260</td>
+              <td><span class="status-certified">Active</span></td>
+            </tr>
+            <tr>
+              <td>Visa Fleet 2.0 / WEX 4.1 Certification</td>
+              <td>—</td>
+              <td>—</td>
+              <td>3.1.212.1130</td>
+              <td><span class="status-certified">Certified</span></td>
+            </tr>
+            <tr>
+              <td>Cash Acceptors</td>
+              <td>—</td>
+              <td>—</td>
+              <td>N/A</td>
+              <td><span class="status-disabled">Disabled / Not Supported</span></td>
+            </tr>
+            <tr>
+              <td>Master Session & SDES</td>
+              <td>—</td>
+              <td>—</td>
+              <td>N/A</td>
+              <td><span class="status-disabled">Disabled</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="notes-list">
+        <li>Jade board is recommended for outdoor EMV. Red board can be used if non-media site.</li>
+        <li>Cash Acceptors are not supported with EMV.</li>
+        <li>Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne.</li>
+      </ul>
     </div>
-
-    <div class="controls">
-      <div class="control-group">
-        <label>Base Software Version</label><br>
-        <select id="baseSelect" onchange="onBaseChange()">
-          <option value="">-- Select Version --</option>
-          <option value="54.01.00">Base 54.01.00</option>
-          <option value="54.02.00">Base 54.02.00</option>
-          <option value="54.02.01">Base 54.02.01</option>
-          <option value="54.02.02">Base 54.02.02</option>
-          <option value="54.02.03">Base 54.02.03</option>
-          <option value="54.02.04">Base 54.02.04</option>
-          <option value="54.02.05">Base 54.02.05</option>
-          <option value="55.00.00">Base 55.00.00</option>
-          <option value="55.00.01">Base 55.00.01</option>
-          <option value="55.01.01">Base 55.01.01</option>
-          <option value="55.02.00">Base 55.02.00</option>
-          <option value="55.02.01">Base 55.02.01</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label>Dispenser Brand</label><br>
-        <select id="brandSelect" onchange="onBrandChange()" disabled>
-          <option value="">-- Select Brand --</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label>Platform / Model</label><br>
-        <select id="platformSelect" onchange="renderDetails()" disabled>
-          <option value="">-- Select Platform --</option>
-        </select>
-      </div>
-    </div>
-
-    <div id="displayArea" class="display-area" style="display:none;"></div>
   </div>
 
-  <!-- Import base version data files -->
-  <script src="data-54.01.00.js"></script>
-  <script src="data-54.02.00.js"></script>
-  <script src="data-54.02.01.js"></script>
-  <script src="data-54.02.02.js"></script>
-  <script src="data-54.02.03.js"></script>
-  <script src="data-54.02.04.js"></script>
-  <script src="data-54.02.05.js"></script>
-  <script src="data-55.00.00.js"></script>
-  <script src="data-55.00.01.js"></script>
-  <script src="data-55.01.01.js"></script>
-  <script src="data-55.02.00.js"></script>
-  <script src="data-55.02.01.js"></script>
-
-  <script>
-    const versionDataMap = {
-      "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
-      "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
-      "54.02.01": typeof BASE_54_02_01_DATA !== 'undefined' ? BASE_54_02_01_DATA : null,
-      "54.02.02": typeof BASE_54_02_02_DATA !== 'undefined' ? BASE_54_02_02_DATA : null,
-      "54.02.03": typeof BASE_54_02_03_DATA !== 'undefined' ? BASE_54_02_03_DATA : null,
-      "54.02.04": typeof BASE_54_02_04_DATA !== 'undefined' ? BASE_54_02_04_DATA : null,
-      "54.02.05": typeof BASE_54_02_05_DATA !== 'undefined' ? BASE_54_02_05_DATA : null,
-      "55.00.00": typeof BASE_55_00_00_DATA !== 'undefined' ? BASE_55_00_00_DATA : null,
-      "55.00.01": typeof BASE_55_00_01_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
-      "55.01.01": typeof BASE_55_01_01_DATA !== 'undefined' ? BASE_55_01_01_DATA : null,
-      "55.02.00": typeof BASE_55_02_00_DATA !== 'undefined' ? BASE_55_02_00_DATA : null,
-      "55.02.01": typeof BASE_55_02_01_DATA !== 'undefined' ? BASE_55_02_01_DATA : null
-    };
-
-    let selectedVersionData = null;
-
-    function onBaseChange() {
-      const baseVal = document.getElementById("baseSelect").value;
-      const brandSelect = document.getElementById("brandSelect");
-      const platformSelect = document.getElementById("platformSelect");
-      const displayArea = document.getElementById("displayArea");
-      
-      brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
-      platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
-      platformSelect.disabled = true;
-      displayArea.style.display = "none";
-      displayArea.innerHTML = "";
-
-      if (!baseVal || !versionDataMap[baseVal]) {
-        brandSelect.disabled = true;
-        return;
-      }
-
-      selectedVersionData = versionDataMap[baseVal];
-      
-      if (selectedVersionData.brands) {
-        Object.keys(selectedVersionData.brands).forEach(brand => {
-          const opt = document.createElement("option");
-          opt.value = brand;
-          opt.textContent = brand;
-          brandSelect.appendChild(opt);
-        });
-        brandSelect.disabled = false;
-      } else {
-        brandSelect.disabled = true;
-      }
-    }
-
-    function onBrandChange() {
-      const brandVal = document.getElementById("brandSelect").value;
-      const platformSelect = document.getElementById("platformSelect");
-      const displayArea = document.getElementById("displayArea");
-
-      platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
-      displayArea.style.display = "none";
-      displayArea.innerHTML = "";
-
-      if (!brandVal || !selectedVersionData?.brands?.[brandVal]) {
-        platformSelect.disabled = true;
-        return;
-      }
-
-      const platforms = selectedVersionData.brands[brandVal].platforms;
-      
-      if (platforms) {
-        Object.keys(platforms).forEach(platform => {
-          const opt = document.createElement("option");
-          opt.value = platform;
-          opt.textContent = platform;
-          platformSelect.appendChild(opt);
-        });
-        platformSelect.disabled = false;
-      } else {
-        platformSelect.disabled = true;
-      }
-    }
-
-    function renderDetails() {
-      const brandVal = document.getElementById("brandSelect").value;
-      const platformVal = document.getElementById("platformSelect").value;
-      const display = document.getElementById("displayArea");
-      display.innerHTML = "";
-
-      if (!brandVal || !platformVal) {
-        display.style.display = "none";
-        return;
-      }
-
-      display.style.display = "block";
-      const brandData = selectedVersionData.brands[brandVal];
-      const platformData = brandData.platforms[platformVal];
-
-      let html = "";
-
-      if (brandData.generalNote) {
-        html += `<div class="note-box"><b>NOTE:</b> ${brandData.generalNote}</div>`;
-      }
-
-      html += `<div class="header-black">${brandVal}: ${platformVal}</div>`;
-
-      // Invenco Models Table
-      if (platformData.models) {
-        html += `
-          <table>
-            <thead>
-              <tr><th>Model Number</th><th>Description</th><th>Name</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.models.forEach(m => {
-          html += `<tr><td>${m.model}</td><td>${m.description}</td><td>${m.name}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // EMV Support / EMV Certification Section
-      const emvData = platformData.emvSupport || platformData.emvCertification;
-      if (emvData) {
-        const emvHeader = platformData.emvSupport ? "EMV Support" : "EMV Certification";
-        html += `
-          <table>
-            <tr><th colspan="2">${emvHeader}</th></tr>
-            <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
-            <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
-          </table>`;
-      }
-
-      // EMV Status
-      if (platformData.emvStatus) {
-        html += `
-          <table>
-            <thead>
-              <tr>
-                <th>EMV Status</th>
-                <th>Firmware</th>
-                <th>Contactless Reader</th>
-                <th>Contactless Reader Firmware</th>
-                <th>Contactless Build Revision</th>
-              </tr>
-            </thead>
-            <tbody>`;
-        platformData.emvStatus.forEach(row => {
-          html += `<tr>
-            <td>${row.mode}</td>
-            <td>${row.firmware}</td>
-            <td>${row.reader}</td>
-            <td>${row.readerFirmware}</td>
-            <td>${row.buildRevision}</td>
-          </tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Supported Options
-      if (platformData.supportedOptions) {
-        const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-        html += `
-          <table>
-            <thead>
-              <tr><th>Supported Options</th><th>${header}</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.supportedOptions.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Debit Section
-      if (platformData.debit) {
-        const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-        html += `<div class="header-black">Debit</div>`;
-        html += `
-          <table>
-            <thead>
-              <tr><th>Supported Options</th><th>${header}</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.debit.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // CRINDs Table (Gilbarco EPP)
-      if (platformData.crinds) {
-        html += `<div class="header-black">CRINDs</div>`;
-        html += `
-          <table>
-            <thead>
-              <tr><th>CRIND Model</th><th>Recommended Minimum Version</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.crinds.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Brand Specific Dispenser Software Table Filtering
-      if (brandData.dispenserSoftware) {
-        const matchedSoftware = brandData.dispenserSoftware.filter(ds => 
-          ds.modelMatch && ds.modelMatch.includes(platformVal)
-        );
-
-        if (matchedSoftware.length > 0) {
-          html += `<div class="header-black">Dispensers Supported (${brandVal})</div>`;
-          html += `
-            <table>
-              <thead>
-                <tr><th>Dispenser</th><th>Description</th><th>Version</th></tr>
-              </thead>
-              <tbody>`;
-          matchedSoftware.forEach(ds => {
-            html += `<tr><td>${ds.dispenser}</td><td>${ds.description}</td><td>${ds.version}</td></tr>`;
-          });
-          html += `</tbody></table>`;
-
-          if (brandData.dispenserSoftwareNotes) {
-            html += `<div class="note-box"><b>Dispenser Notes:</b><ul>`;
-            brandData.dispenserSoftwareNotes.forEach(note => {
-              html += `<li>${note}</li>`;
-            });
-            html += `</ul></div>`;
-          }
-        }
-      }
-
-      // Notes
-      if (platformData.notes && platformData.notes.length > 0) {
-        html += `<div class="header-black">Notes</div><div class="note-box"><ul>`;
-        platformData.notes.forEach(note => {
-          html += `<li>${note}</li>`;
-        });
-        html += `</ul></div>`;
-      }
-
-      display.innerHTML = html;
-    }
-  </script>
 </body>
 </html>
