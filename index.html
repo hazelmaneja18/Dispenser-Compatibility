@@ -4,27 +4,52 @@
   <meta charset="UTF-8">
   <title>Fuel Hardware Peripherals Compatibility</title>
   <style>
+    :root {
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --primary-accent: #2563eb;
+
+      /* Bright Neon Cyan Accent Color (Matching Image 2) */
+      --header-cyan-bg: #52ffdc;
+      --header-cyan-text: #000000;
+
+      /* Certified Status Colors */
+      --certified-bg: #ecfdf5;
+      --certified-text: #047857;
+      --certified-border: #10b981;
+      --certified-glow: rgba(16, 185, 129, 0.45);
+
+      /* Disabled Status Colors */
+      --disabled-bg: #fef2f2;
+      --disabled-text: #991b1b;
+      --disabled-border: #fca5a5;
+    }
+
     body { 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
       margin: 0; 
-      padding: 40px 15px; 
-      background-color: #f1f5f9;
-      color: #334155;
+      padding: 40px 20px; 
+      background-color: var(--bg-main);
+      color: var(--text-dark);
       display: flex;
       justify-content: center;
+      line-height: 1.5;
     }
 
     .container {
       width: 100%;
-      max-width: 950px;
+      max-width: 980px;
     }
 
     .card { 
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-      padding: 28px 32px; 
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+      padding: 32px; 
       color: #ffffff; 
-      border-radius: 10px 10px 0 0; 
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      border-radius: 12px 12px 0 0; 
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
     }
 
     .brand-header {
@@ -46,7 +71,7 @@
       margin: 0;
       font-size: 22px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: #ffffff;
     }
 
@@ -59,11 +84,12 @@
 
     .controls { 
       background: #ffffff; 
-      padding: 24px 32px; 
+      padding: 28px 32px; 
       display: flex; 
       gap: 24px; 
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-color);
       border-top: none;
+      border-radius: 0 0 12px 12px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
@@ -74,92 +100,126 @@
     .control-group label {
       font-size: 11px;
       font-weight: 700;
-      color: #64748b;
-      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
     }
 
     select { 
-      padding: 10px 12px; 
+      padding: 10px 14px; 
       width: 100%; 
-      margin-top: 8px;
       border: 1px solid #cbd5e1;
-      border-radius: 6px;
+      border-radius: 8px;
       box-sizing: border-box;
-      background-color: #f8fafc;
-      color: #1e293b;
+      background-color: #ffffff;
+      color: var(--text-dark);
       font-size: 13.5px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
 
     select:disabled {
       background-color: #f1f5f9;
       color: #94a3b8;
       cursor: not-allowed;
+      border-color: var(--border-color);
     }
 
     .display-area { 
-      margin-top: 24px; 
+      margin-top: 28px; 
       background: #ffffff;
-      padding: 24px;
-      border-radius: 8px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     table { 
       width: 100%; 
-      border-collapse: collapse; 
-      margin-bottom: 20px; 
+      border-collapse: separate; 
+      border-spacing: 0;
+      margin-bottom: 24px; 
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     th, td { 
-      border: 1px solid #cbd5e1; 
-      padding: 10px 14px; 
-      text-align: left; 
+      padding: 12px 16px; 
+      text-align: center; 
       font-size: 13px;
     }
 
-    th { 
-      background-color: #00ffcc; 
-      color: #0f172a; 
+    /* Primary Cyan Header Rows */
+    th, .header-cyan { 
+      background-color: var(--header-cyan-bg) !important; 
+      color: var(--header-cyan-text) !important; 
       font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    td {
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-dark);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
     }
 
     .header-black { 
-      background-color: #0f172a; 
+      background: #000000; 
       color: #ffffff; 
-      padding: 10px 14px; 
+      padding: 12px 18px; 
       font-weight: 600; 
       text-align: center; 
       font-size: 14px;
-      margin-top: 20px;
+      margin-top: 24px;
       margin-bottom: 0;
-      border-radius: 4px 4px 0 0;
-      letter-spacing: 0.02em;
+      border-radius: 8px 8px 0 0;
+      letter-spacing: 0.01em;
+    }
+
+    .header-black + table {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top: none;
     }
 
     .note-box { 
       background-color: #f8fafc; 
-      padding: 14px 16px; 
-      border-left: 4px solid #0284c7; 
-      border-top: 1px solid #e2e8f0;
-      border-right: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 20px; 
+      padding: 16px 20px; 
+      border-left: 4px solid var(--primary-accent); 
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px; 
       font-size: 13px;
-      line-height: 1.5;
-      color: #334155;
+      line-height: 1.6;
+      color: var(--text-dark);
+      text-align: left;
     }
 
     .note-box ul {
-      margin: 0;
+      margin: 8px 0 0 0;
       padding-left: 20px;
     }
 
@@ -169,6 +229,46 @@
 
     .note-box li:last-child {
       margin-bottom: 0;
+    }
+
+    /* Glowing Certified Badge */
+    .badge-certified {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background-color: var(--certified-bg);
+      color: var(--certified-text);
+      border: 1px solid var(--certified-border);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 12px;
+      box-shadow: 0 0 10px var(--certified-glow);
+    }
+
+    .badge-certified::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--certified-border);
+      box-shadow: 0 0 6px var(--certified-border);
+    }
+
+    /* Soft Red Disabled Badge */
+    .badge-disabled {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--disabled-bg);
+      color: var(--disabled-text);
+      border: 1px solid var(--disabled-border);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -195,7 +295,7 @@
 
     <div class="controls">
       <div class="control-group">
-        <label>Base Software Version</label><br>
+        <label>Base Software Version</label>
         <select id="baseSelect" onchange="onBaseChange()">
           <option value="">-- Select Version --</option>
           <option value="54.01.00">Base 54.01.00</option>
@@ -214,14 +314,14 @@
       </div>
 
       <div class="control-group">
-        <label>Dispenser Brand</label><br>
+        <label>Dispenser Brand</label>
         <select id="brandSelect" onchange="onBrandChange()" disabled>
           <option value="">-- Select Brand --</option>
         </select>
       </div>
 
       <div class="control-group">
-        <label>Platform / Model</label><br>
+        <label>Platform / Model</label>
         <select id="platformSelect" onchange="renderDetails()" disabled>
           <option value="">-- Select Platform --</option>
         </select>
@@ -361,15 +461,19 @@
         html += `</tbody></table>`;
       }
 
-      // EMV Support / EMV Certification Section
+      // EMV Support / EMV Certification Section Header
       const emvData = platformData.emvSupport || platformData.emvCertification;
       if (emvData) {
         const emvHeader = platformData.emvSupport ? "EMV Support" : "EMV Certification";
         html += `
           <table>
-            <tr><th colspan="2">${emvHeader}</th></tr>
-            <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
-            <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
+            <thead>
+              <tr><th colspan="2" class="header-cyan">${emvHeader}</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
+              <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
+            </tbody>
           </table>`;
       }
 
@@ -484,6 +588,18 @@
       }
 
       display.innerHTML = html;
+
+      // Apply dynamic visual badges and maintain centered formatting
+      display.querySelectorAll('td').forEach(td => {
+        const text = td.textContent.trim();
+        const lower = text.toLowerCase();
+
+        if (lower === 'certified' || lower.includes('certified')) {
+          td.innerHTML = `<span class="badge-certified">${text}</span>`;
+        } else if (lower.includes('disabled') || lower.includes('not supported')) {
+          td.innerHTML = `<span class="badge-disabled">${text}</span>`;
+        }
+      });
     }
   </script>
 </body>
