@@ -172,7 +172,7 @@ const BASE_55_00_01_DATA = {
       }
     },
     "Invenco by GVR": {
-      generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications.",
+      generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications. In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01.",
       platforms: {
         "FlexPay 6 Outdoor Payment Terminals": {
           models: [
