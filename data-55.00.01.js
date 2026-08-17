@@ -171,12 +171,8 @@ const BASE_55_00_01_DATA = {
         }
       }
     },
-    "Invenco by GVR": {
+"Invenco by GVR": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications.",
-      compatibilityNotes: [
-        "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
-        "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01."
-      ],
       platforms: {
         "FlexPay 6 Outdoor Payment Terminals": {
           models: [
@@ -195,7 +191,8 @@ const BASE_55_00_01_DATA = {
             { option: "EMV Adapter (Supports Visa Fleet 2.0 Support)", minimumVersion: "01.08.0132" }
           ],
           notes: [
-            "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). Support was upgraded to fully supported (Yes) in version 55.01.01."
+            "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
+            "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01."
           ]
         }
       }
