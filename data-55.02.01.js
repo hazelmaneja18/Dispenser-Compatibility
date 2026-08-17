@@ -285,7 +285,7 @@ const BASE_55_02_01_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21031901" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "19020101" },
+            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21032201" },
             { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
             { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
           ],
