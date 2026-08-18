@@ -1,4 +1,4 @@
-const BASE_55_02_10_TO_55_02_11_DATA = { 
+const DATA_55_02_10_TO_55_02_11 = {
   version: "Base 55.02.10 to 55.02.11",
   generalNote: "In 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). This was upgraded to fully supported (Yes) in version 55.01.01+",
   brands: {
@@ -271,9 +271,16 @@ const BASE_55_02_10_TO_55_02_11_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           emvStatus: [
             { mode: "NFC Mode > Contactless", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" }
           ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            ]
+          },
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "Graphics", minimumVersion: "3.1.203.1260" },
@@ -296,10 +303,18 @@ const BASE_55_02_10_TO_55_02_11_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21031901" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "19020101" }
           ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            ]
+          },
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "2.5.15.0" },
             { option: "Graphics", minimumVersion: "2.5.15.0" },
@@ -420,4 +435,3 @@ const BASE_55_02_10_TO_55_02_11_DATA = {
     }
   }
 };
-
