@@ -271,8 +271,11 @@ const BASE_55_02_01_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           emvStatus: [
             { mode: "NFC Mode > Contactless", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" }
+          ],
+          visaFleetSupport: [
+            { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
+            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
           ],
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
