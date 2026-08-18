@@ -88,7 +88,7 @@ const BASE_55_02_02_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
-            { option: "EMV", minimumVersion: "3.6.06" },
+            { option: "EMV Support", minimumVersion: "3.6.06" },
             { option: "Graphics", minimumVersion: "30.3.03" },
             { option: "Cash Acceptors", minimumVersion: "30.3.03" }
           ],
@@ -256,7 +256,7 @@ const BASE_55_02_02_DATA = {
         { modelMatch: [], dispenser: "SC-82", description: "Dispenser", version: "See second note below" }
       ],
       platforms: {
-        "Visa Fleet 2.0 / WEX 4.1 Certification": {
+        "Visa Fleet 2.0 / WEX 4.1 Support": {
           supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Visa Fleet 2.0 / WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
@@ -272,7 +272,7 @@ const BASE_55_02_02_DATA = {
           emvStatus: [
             { mode: "NFC Mode > Contactless", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
           ],
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
@@ -297,8 +297,8 @@ const BASE_55_02_02_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21031901" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
+            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
           ],
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "2.5.15.0" },
@@ -320,9 +320,9 @@ const BASE_55_02_02_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           debit: [
             { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
+            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
-            { option: "Visa Fleet 2.0/WEX 4.1", minimumVersion: "3.1.212.1130" },
-            { option: "ANTX (Visa Fleet 2.0/WEX 4.1)", minimumVersion: "1.22.5.326" }
+            { option: "ANTX (Visa Fleet 2.0/WEX 4.1 Support)", minimumVersion: "1.22.5.326" }
           ],
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
@@ -333,9 +333,9 @@ const BASE_55_02_02_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           debit: [
             { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
+            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
-            { option: "Visa Fleet 2.0/WEX 4.1", minimumVersion: "3.1.212.1130" },
-            { option: "ANTX (Visa Fleet 2.0/WEX 4.1)", minimumVersion: "1.22.5.326" }
+            { option: "ANTX (Visa Fleet 2.0/WEX 4.1 Support)", minimumVersion: "1.22.5.326" }
           ],
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
