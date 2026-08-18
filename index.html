@@ -12,7 +12,7 @@
       --border-color: #e2e8f0;
       --primary-accent: #2563eb;
 
-      /* Bright Neon Cyan Accent Color (Matching Image 2) */
+      /* Bright Neon Cyan Accent Color */
       --header-cyan-bg: #52ffdc;
       --header-cyan-text: #000000;
 
@@ -310,11 +310,14 @@
           <option value="55.01.01">Base 55.01.01</option>
           <option value="55.02.00">Base 55.02.00</option>
           <option value="55.02.01">Base 55.02.01</option>
-          <option value="55.02.01">Base 55.02.02</option>
-          <option value="55.02.01">Base 55.02.03</option>
-          <option value="55.02.01">Base 55.02.04</option>
-          <option value="55.02.01">Base 55.02.05</option>
-          <option value="55.02.01">Base 55.02.05 to 55.02.09</option>
+          <option value="55.02.02">Base 55.02.02</option>
+          <option value="55.02.03">Base 55.02.03</option>
+          <option value="55.02.04">Base 55.02.04</option>
+          <option value="55.02.05">Base 55.02.05</option>
+          <option value="55.02.05-to-55.02.09">Base 55.02.05 to 55.02.09</option>
+          <option value="55.02.10-to-55.02.11">Base 55.02.10 to 55.02.11</option>
+          <option value="56.00.00-to-56.02.00">Base 56.00.00 to 56.02.00</option>
+          <option value="56.01.00-to-56.03.02">Base 56.01.00 to 56.03.02</option>
         </select>
       </div>
 
@@ -354,6 +357,9 @@
   <script src="data-55.02.04.js"></script>
   <script src="data-55.02.05.js"></script>
   <script src="data-55.02.05-to-55.02.09.js"></script>
+  <script src="data-55.02.10-to-55.02.11.js"></script>
+  <script src="data-56.00.00-to-56.02.00.js"></script>
+  <script src="data-56.01.00-to-56.03.02.js"></script>
 
   <script>
     const versionDataMap = {
@@ -373,7 +379,10 @@
       "55.02.03": typeof BASE_55_02_03_DATA !== 'undefined' ? BASE_55_02_03_DATA : null,
       "55.02.04": typeof BASE_55_02_04_DATA !== 'undefined' ? BASE_55_02_04_DATA : null,
       "55.02.05": typeof BASE_55_02_05_DATA !== 'undefined' ? BASE_55_02_05_DATA : null,
-      "Base 55.02.05 to 55.02.09": typeof BASE_55_02_05_TO_55_02_09_DATA !== 'undefined' ? BASE_55_02_05_TO_55_02_09_DATA : null,
+      "55.02.05-to-55.02.09": typeof BASE_55_02_05_TO_55_02_09_DATA !== 'undefined' ? BASE_55_02_05_TO_55_02_09_DATA : null,
+      "55.02.10-to-55.02.11": typeof BASE_55_02_10_TO_55_02_11_DATA !== 'undefined' ? BASE_55_02_10_TO_55_02_11_DATA : null,
+      "56.00.00-to-56.02.00": typeof BASE_56_00_00_TO_56_02_00_DATA !== 'undefined' ? BASE_56_00_00_TO_56_02_00_DATA : null,
+      "56.01.00-to-56.03.02": typeof BASE_56_01_00_TO_56_03_02_DATA !== 'undefined' ? BASE_56_01_00_TO_56_03_02_DATA : null,
     };
 
     let selectedVersionData = null;
