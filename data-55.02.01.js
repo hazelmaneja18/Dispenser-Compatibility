@@ -277,6 +277,7 @@ const BASE_55_02_01_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
           ],
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "Graphics", minimumVersion: "3.1.203.1260" },
@@ -302,11 +303,12 @@ const BASE_55_02_01_DATA = {
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "19020101" }
           ],
           visaFleetSupport: [
-            { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
+            { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
+            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
           ],
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "2.5.15.0" },
             { option: "Graphics", minimumVersion: "2.5.15.0" },
@@ -350,6 +352,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "iX — Blue Board": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "1.3.8.0" },
             { option: "Graphics", minimumVersion: "1.3.8.0" },
@@ -364,6 +367,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Ovation / Ovation 2 with qCAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Graphics", minimumVersion: "206.00" },
             { option: "Scanner", minimumVersion: "206.00" }
@@ -377,6 +381,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Vista3V": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "103.00" },
             { option: "Graphics", minimumVersion: "103.00" },
@@ -392,6 +397,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Dual CAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "103.00" },
             { option: "Graphics", minimumVersion: "103.00" },
@@ -407,6 +413,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Legacy CAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "64.00" },
             { option: "Graphics", minimumVersion: "64.00" },
