@@ -1,5 +1,5 @@
-const BASE_55_02_04_DATA = {
-  version: "Base 55.02.04",
+const BASE_55_02_02_TO_55_02_03_DATA = {
+  version: "Base 55.02.02 to 55.02.03",
   generalNote: "In 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). This was upgraded to fully supported (Yes) in version 55.01.01+",
   brands: {
     "Bennett": {
@@ -361,7 +361,7 @@ const BASE_55_02_04_DATA = {
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
             "Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne.",
-            "For WPF:999 display message, sites should upgrade DCR firmware to 3.1.214.1530 or higher so the Forecourt correctly identifies the DCR as Anthem rather than iXPay2."
+            "If experiencing a \"WPF:999\" display message, upgrade DCR firmware to 3.1.214.1530 or higher so the Forecourt correctly identifies the DCR as Anthem rather than iXPay2."
           ]
         },
         "Anthem (AX12, AX27)": {
@@ -377,7 +377,7 @@ const BASE_55_02_04_DATA = {
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
             "Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne.",
-            "For WPF:999 display message, sites should upgrade DCR firmware to 3.1.214.1530 or higher so the Forecourt correctly identifies the DCR as Anthem rather than iXPay2."
+            "If experiencing a \"WPF:999\" display message, upgrade DCR firmware to 3.1.214.1530 or higher so the Forecourt correctly identifies the DCR as Anthem rather than iXPay2."
           ]
         },
         "iX — Blue Board": {
