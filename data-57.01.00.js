@@ -1,4 +1,4 @@
-const DATA_57_01_00 = {
+const BASE_57_01_00_DATA = {
   version: "Base 57.01.00",
   generalNote: "In 55.00.01, Shell support for Invenco dispensers was classified as Beta (No). This was upgraded to fully supported (Yes) in version 55.01.01+",
   brands: {
