@@ -361,270 +361,261 @@
   <script src="data-56.00.00-to-56.01.00.js"></script>
   <script src="data-56.01.00-to-56.03.02.js"></script>
 
-  <script>
-    const versionDataMap = {
-      "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
-      "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
-      "54.02.01": typeof BASE_54_02_01_DATA !== 'undefined' ? BASE_54_02_01_DATA : null,
-      "54.02.02": typeof BASE_54_02_02_DATA !== 'undefined' ? BASE_54_02_02_DATA : null,
-      "54.02.03": typeof BASE_54_02_03_DATA !== 'undefined' ? BASE_54_02_03_DATA : null,
-      "54.02.04": typeof BASE_54_02_04_DATA !== 'undefined' ? BASE_54_02_04_DATA : null,
-      "54.02.05": typeof BASE_54_02_05_DATA !== 'undefined' ? BASE_54_02_05_DATA : null,
-      "55.00.00": typeof BASE_55_00_00_DATA !== 'undefined' ? BASE_55_00_00_DATA : null,
-      "55.00.01": typeof BASE_55_00_01_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
-      "55.01.01": typeof BASE_55_01_01_DATA !== 'undefined' ? BASE_55_01_01_DATA : null,
-      "55.02.00": typeof BASE_55_02_00_DATA !== 'undefined' ? BASE_55_02_00_DATA : null,
-      "55.02.01": typeof BASE_55_02_01_DATA !== 'undefined' ? BASE_55_02_01_DATA : null,
-      "55.02.02": typeof BASE_55_02_02_DATA !== 'undefined' ? BASE_55_02_02_DATA : null,
-      "55.02.03": typeof BASE_55_02_03_DATA !== 'undefined' ? BASE_55_02_03_DATA : null,
-      "55.02.04": typeof BASE_55_02_04_DATA !== 'undefined' ? BASE_55_02_04_DATA : null,
-      "55.02.05": typeof BASE_55_02_05_DATA !== 'undefined' ? BASE_55_02_05_DATA : null,
-      "55.02.05-to-55.02.09": typeof BASE_55_02_05_TO_55_02_09_DATA !== 'undefined' ? BASE_55_02_05_TO_55_02_09_DATA : null,
-      "55.02.10-to-55.02.11": typeof BASE_55_02_10_TO_55_02_11_DATA !== 'undefined' ? BASE_55_02_10_TO_55_02_11_DATA : null,
-      "56.00.00-to-56.01.00": typeof BASE_56_00_00_TO_56_02_01_DATA !== 'undefined' ? BASE_56_00_00_TO_56_02_01_DATA : null,
-      "56.01.00-to-56.03.02": typeof BASE_56_01_00_TO_56_03_02_DATA !== 'undefined' ? BASE_56_01_00_TO_56_03_02_DATA : null
-    };
+<script>
+  const versionDataMap = {
+    "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
+    "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
+    "54.02.01": typeof BASE_54_02_01_DATA !== 'undefined' ? BASE_54_02_01_DATA : null,
+    "54.02.02": typeof BASE_54_02_02_DATA !== 'undefined' ? BASE_54_02_02_DATA : null,
+    "54.02.03": typeof BASE_54_02_03_DATA !== 'undefined' ? BASE_54_02_03_DATA : null,
+    "54.02.04": typeof BASE_54_02_04_DATA !== 'undefined' ? BASE_54_02_04_DATA : null,
+    "54.02.05": typeof BASE_54_02_05_DATA !== 'undefined' ? BASE_54_02_05_DATA : null,
+    "55.00.00": typeof BASE_55_00_00_DATA !== 'undefined' ? BASE_55_00_00_DATA : null,
+    "55.00.01": typeof BASE_55_00_01_DATA !== 'undefined' ? BASE_55_00_01_DATA : null,
+    "55.01.01": typeof BASE_55_01_01_DATA !== 'undefined' ? BASE_55_01_01_DATA : null,
+    "55.02.00": typeof BASE_55_02_00_DATA !== 'undefined' ? BASE_55_02_00_DATA : null,
+    "55.02.01": typeof BASE_55_02_01_DATA !== 'undefined' ? BASE_55_02_01_DATA : null,
+    "55.02.02": typeof BASE_55_02_02_DATA !== 'undefined' ? BASE_55_02_02_DATA : null,
+    "55.02.03": typeof BASE_55_02_03_DATA !== 'undefined' ? BASE_55_02_03_DATA : null,
+    "55.02.04": typeof BASE_55_02_04_DATA !== 'undefined' ? BASE_55_02_04_DATA : null,
+    "55.02.05": typeof BASE_55_02_05_DATA !== 'undefined' ? BASE_55_02_05_DATA : null,
+    "55.02.05-to-55.02.09": typeof BASE_55_02_05_TO_55_02_09_DATA !== 'undefined' ? BASE_55_02_05_TO_55_02_09_DATA : null,
+    "55.02.10-to-55.02.11": typeof BASE_55_02_10_TO_55_02_11_DATA !== 'undefined' ? BASE_55_02_10_TO_55_02_11_DATA : null,
+    "56.00.00-to-56.01.00": typeof BASE_56_00_00_TO_56_01_00_DATA !== 'undefined' ? BASE_56_00_00_TO_56_01_00_DATA : null,
+    "56.01.00-to-56.03.02": typeof BASE_56_01_00_TO_56_03_02_DATA !== 'undefined' ? BASE_56_01_00_TO_56_03_02_DATA : null
+  };
 
-    let selectedVersionData = null;
+  let selectedVersionData = null;
 
-    function onBaseChange() {
-      const baseVal = document.getElementById("baseSelect").value;
-      const brandSelect = document.getElementById("brandSelect");
-      const platformSelect = document.getElementById("platformSelect");
-      const displayArea = document.getElementById("displayArea");
-      
-      brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
-      platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
-      platformSelect.disabled = true;
-      displayArea.style.display = "none";
-      displayArea.innerHTML = "";
+  function onBaseChange() {
+    const baseVal = document.getElementById("baseSelect").value;
+    const brandSelect = document.getElementById("brandSelect");
+    const platformSelect = document.getElementById("platformSelect");
+    const displayArea = document.getElementById("displayArea");
+    
+    brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
+    platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
+    platformSelect.disabled = true;
+    displayArea.style.display = "none";
+    displayArea.innerHTML = "";
 
-      if (!baseVal || !versionDataMap[baseVal]) {
-        brandSelect.disabled = true;
-        return;
-      }
-
-      selectedVersionData = versionDataMap[baseVal];
-      
-      if (selectedVersionData.brands) {
-        Object.keys(selectedVersionData.brands).forEach(brand => {
-          const opt = document.createElement("option");
-          opt.value = brand;
-          opt.textContent = brand;
-          brandSelect.appendChild(opt);
-        });
-        brandSelect.disabled = false;
-      } else {
-        brandSelect.disabled = true;
-      }
+    if (!baseVal || !versionDataMap[baseVal]) {
+      brandSelect.disabled = true;
+      return;
     }
 
-    function onBrandChange() {
-      const brandVal = document.getElementById("brandSelect").value;
-      const platformSelect = document.getElementById("platformSelect");
-      const displayArea = document.getElementById("displayArea");
-
-      platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
-      displayArea.style.display = "none";
-      displayArea.innerHTML = "";
-
-      if (!brandVal || !selectedVersionData?.brands?.[brandVal]) {
-        platformSelect.disabled = true;
-        return;
-      }
-
-      const platforms = selectedVersionData.brands[brandVal].platforms;
-      
-      if (platforms) {
-        Object.keys(platforms).forEach(platform => {
-          const opt = document.createElement("option");
-          opt.value = platform;
-          opt.textContent = platform;
-          platformSelect.appendChild(opt);
-        });
-        platformSelect.disabled = false;
-      } else {
-        platformSelect.disabled = true;
-      }
-    }
-
-    function renderDetails() {
-      const brandVal = document.getElementById("brandSelect").value;
-      const platformVal = document.getElementById("platformSelect").value;
-      const display = document.getElementById("displayArea");
-      display.innerHTML = "";
-
-      if (!brandVal || !platformVal) {
-        display.style.display = "none";
-        return;
-      }
-
-      display.style.display = "block";
-      const brandData = selectedVersionData.brands[brandVal];
-      const platformData = brandData.platforms[platformVal];
-
-      let html = "";
-
-      if (brandData.generalNote) {
-        html += `<div class="note-box"><b>NOTE:</b> ${brandData.generalNote}</div>`;
-      }
-
-      html += `<div class="header-black">${brandVal}: ${platformVal}</div>`;
-
-      // Invenco Models Table
-      if (platformData.models) {
-        html += `
-          <table>
-            <thead>
-              <tr><th>Model Number</th><th>Description</th><th>Name</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.models.forEach(m => {
-          html += `<tr><td>${m.model}</td><td>${m.description}</td><td>${m.name}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // EMV Support / EMV Certification Section Header
-      const emvData = platformData.emvSupport || platformData.emvCertification;
-      if (emvData) {
-        const emvHeader = platformData.emvSupport ? "EMV Support" : "EMV Certification";
-        html += `
-          <table>
-            <thead>
-              <tr><th colspan="2" class="header-cyan">${emvHeader}</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
-              <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
-            </tbody>
-          </table>`;
-      }
-
-      // EMV Status
-      if (platformData.emvStatus) {
-        html += `
-          <table>
-            <thead>
-              <tr>
-                <th>EMV Status</th>
-                <th>Firmware</th>
-                <th>Contactless Reader</th>
-                <th>Contactless Reader Firmware</th>
-                <th>Contactless Build Revision</th>
-              </tr>
-            </thead>
-            <tbody>`;
-        platformData.emvStatus.forEach(row => {
-          html += `<tr>
-            <td>${row.mode}</td>
-            <td>${row.firmware}</td>
-            <td>${row.reader}</td>
-            <td>${row.readerFirmware}</td>
-            <td>${row.buildRevision}</td>
-          </tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Supported Options
-      if (platformData.supportedOptions) {
-        const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-        html += `
-          <table>
-            <thead>
-              <tr><th>Supported Options</th><th>${header}</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.supportedOptions.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Debit Section
-      if (platformData.debit) {
-        const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-        html += `<div class="header-black">Debit</div>`;
-        html += `
-          <table>
-            <thead>
-              <tr><th>Supported Options</th><th>${header}</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.debit.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // CRINDs Table (Gilbarco EPP)
-      if (platformData.crinds) {
-        html += `<div class="header-black">CRINDs</div>`;
-        html += `
-          <table>
-            <thead>
-              <tr><th>CRIND Model</th><th>Recommended Minimum Version</th></tr>
-            </thead>
-            <tbody>`;
-        platformData.crinds.forEach(row => {
-          html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
-        });
-        html += `</tbody></table>`;
-      }
-
-      // Brand Specific Dispenser Software Table Filtering
-      if (brandData.dispenserSoftware) {
-        const matchedSoftware = brandData.dispenserSoftware.filter(ds => 
-          ds.modelMatch && ds.modelMatch.includes(platformVal)
-        );
-
-        if (matchedSoftware.length > 0) {
-          html += `<div class="header-black">Dispensers Supported (${brandVal})</div>`;
-          html += `
-            <table>
-              <thead>
-                <tr><th>Dispenser</th><th>Description</th><th>Version</th></tr>
-              </thead>
-              <tbody>`;
-          matchedSoftware.forEach(ds => {
-            html += `<tr><td>${ds.dispenser}</td><td>${ds.description}</td><td>${ds.version}</td></tr>`;
-          });
-          html += `</tbody></table>`;
-
-          if (brandData.dispenserSoftwareNotes) {
-            html += `<div class="note-box"><b>Dispenser Notes:</b><ul>`;
-            brandData.dispenserSoftwareNotes.forEach(note => {
-              html += `<li>${note}</li>`;
-            });
-            html += `</ul></div>`;
-          }
-        }
-      }
-
-      // Notes
-      if (platformData.notes && platformData.notes.length > 0) {
-        html += `<div class="header-black">Notes</div><div class="note-box"><ul>`;
-        platformData.notes.forEach(note => {
-          html += `<li>${note}</li>`;
-        });
-        html += `</ul></div>`;
-      }
-
-      display.innerHTML = html;
-
-      // Apply dynamic visual badges and maintain centered formatting
-      display.querySelectorAll('td').forEach(td => {
-        const text = td.textContent.trim();
-        const lower = text.toLowerCase();
-
-        if (lower === 'certified' || lower.includes('certified')) {
-          td.innerHTML = `<span class="badge-certified">${text}</span>`;
-        } else if (lower.includes('disabled') || lower.includes('not supported')) {
-          td.innerHTML = `<span class="badge-disabled">${text}</span>`;
-        }
+    selectedVersionData = versionDataMap[baseVal];
+    
+    if (selectedVersionData.brands) {
+      Object.keys(selectedVersionData.brands).forEach(brand => {
+        const opt = document.createElement("option");
+        opt.value = brand;
+        opt.textContent = brand;
+        brandSelect.appendChild(opt);
       });
+      brandSelect.disabled = false;
+    } else {
+      brandSelect.disabled = true;
     }
-  </script>
+  }
+
+  function onBrandChange() {
+    const brandVal = document.getElementById("brandSelect").value;
+    const platformSelect = document.getElementById("platformSelect");
+    const displayArea = document.getElementById("displayArea");
+
+    platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
+    displayArea.style.display = "none";
+    displayArea.innerHTML = "";
+
+    if (!brandVal || !selectedVersionData?.brands?.[brandVal]) {
+      platformSelect.disabled = true;
+      return;
+    }
+
+    const platforms = selectedVersionData.brands[brandVal].platforms;
+    
+    if (platforms) {
+      Object.keys(platforms).forEach(platform => {
+        const opt = document.createElement("option");
+        opt.value = platform;
+        opt.textContent = platform;
+        platformSelect.appendChild(opt);
+      });
+      platformSelect.disabled = false;
+    } else {
+      platformSelect.disabled = true;
+    }
+  }
+
+  function renderDetails() {
+    const brandVal = document.getElementById("brandSelect").value;
+    const platformVal = document.getElementById("platformSelect").value;
+    const display = document.getElementById("displayArea");
+    display.innerHTML = "";
+
+    if (!brandVal || !platformVal) {
+      display.style.display = "none";
+      return;
+    }
+
+    display.style.display = "block";
+    const brandData = selectedVersionData.brands[brandVal];
+    const platformData = brandData.platforms[platformVal];
+
+    let html = "";
+
+    if (brandData.generalNote) {
+      html += `<div class="note-box"><b>NOTE:</b> ${brandData.generalNote}</div>`;
+    }
+
+    html += `<div class="header-black">${brandVal}: ${platformVal}</div>`;
+
+    if (platformData.models) {
+      html += `
+        <table>
+          <thead>
+            <tr><th>Model Number</th><th>Description</th><th>Name</th></tr>
+          </thead>
+          <tbody>`;
+      platformData.models.forEach(m => {
+        html += `<tr><td>${m.model}</td><td>${m.description}</td><td>${m.name}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    const emvData = platformData.emvSupport || platformData.emvCertification;
+    if (emvData) {
+      const emvHeader = platformData.emvSupport ? "EMV Support" : "EMV Certification";
+      html += `
+        <table>
+          <thead>
+            <tr><th colspan="2" class="header-cyan">${emvHeader}</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
+            <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
+          </tbody>
+        </table>`;
+    }
+
+    if (platformData.emvStatus) {
+      html += `
+        <table>
+          <thead>
+            <tr>
+              <th>EMV Status</th>
+              <th>Firmware</th>
+              <th>Contactless Reader</th>
+              <th>Contactless Reader Firmware</th>
+              <th>Contactless Build Revision</th>
+            </tr>
+          </thead>
+          <tbody>`;
+      platformData.emvStatus.forEach(row => {
+        html += `<tr>
+          <td>${row.mode}</td>
+          <td>${row.firmware}</td>
+          <td>${row.reader}</td>
+          <td>${row.readerFirmware}</td>
+          <td>${row.buildRevision}</td>
+        </tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    if (platformData.supportedOptions) {
+      const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
+      html += `
+        <table>
+          <thead>
+            <tr><th>Supported Options</th><th>${header}</th></tr>
+          </thead>
+          <tbody>`;
+      platformData.supportedOptions.forEach(row => {
+        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    if (platformData.debit) {
+      const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
+      html += `<div class="header-black">Debit</div>`;
+      html += `
+        <table>
+          <thead>
+            <tr><th>Supported Options</th><th>${header}</th></tr>
+          </thead>
+          <tbody>`;
+      platformData.debit.forEach(row => {
+        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    if (platformData.crinds) {
+      html += `<div class="header-black">CRINDs</div>`;
+      html += `
+        <table>
+          <thead>
+            <tr><th>CRIND Model</th><th>Recommended Minimum Version</th></tr>
+          </thead>
+          <tbody>`;
+      platformData.crinds.forEach(row => {
+        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    if (brandData.dispenserSoftware) {
+      const matchedSoftware = brandData.dispenserSoftware.filter(ds => 
+        ds.modelMatch && ds.modelMatch.includes(platformVal)
+      );
+
+      if (matchedSoftware.length > 0) {
+        html += `<div class="header-black">Dispensers Supported (${brandVal})</div>`;
+        html += `
+          <table>
+            <thead>
+              <tr><th>Dispenser</th><th>Description</th><th>Version</th></tr>
+            </thead>
+            <tbody>`;
+        matchedSoftware.forEach(ds => {
+          html += `<tr><td>${ds.dispenser}</td><td>${ds.description}</td><td>${ds.version}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+
+        if (brandData.dispenserSoftwareNotes) {
+          html += `<div class="note-box"><b>Dispenser Notes:</b><ul>`;
+          brandData.dispenserSoftwareNotes.forEach(note => {
+            html += `<li>${note}</li>`;
+          });
+          html += `</ul></div>`;
+        }
+      }
+    }
+
+    if (platformData.notes && platformData.notes.length > 0) {
+      html += `<div class="header-black">Notes</div><div class="note-box"><ul>`;
+      platformData.notes.forEach(note => {
+        html += `<li>${note}</li>`;
+      });
+      html += `</ul></div>`;
+    }
+
+    display.innerHTML = html;
+
+    display.querySelectorAll('td').forEach(td => {
+      const text = td.textContent.trim();
+      const lower = text.toLowerCase();
+
+      if (lower === 'certified' || lower.includes('certified')) {
+        td.innerHTML = `<span class="badge-certified">${text}</span>`;
+      } else if (lower.includes('disabled') || lower.includes('not supported')) {
+        td.innerHTML = `<span class="badge-disabled">${text}</span>`;
+      }
+    });
+  }
+</script>
 </body>
 </html>
