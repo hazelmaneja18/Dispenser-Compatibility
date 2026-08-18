@@ -363,6 +363,7 @@
   <script src="data-56.01.00-to-56.03.02.js"></script>
   
 <script>
+  // Safely map base versions using conditional checks
   const versionDataMap = {
     "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
     "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
@@ -393,7 +394,7 @@
     const brandSelect = document.getElementById("brandSelect");
     const platformSelect = document.getElementById("platformSelect");
     const displayArea = document.getElementById("displayArea");
-    
+
     brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
     platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
     platformSelect.disabled = true;
@@ -402,12 +403,16 @@
 
     if (!baseVal || !versionDataMap[baseVal]) {
       brandSelect.disabled = true;
+      if (baseVal && !versionDataMap[baseVal]) {
+        displayArea.style.display = "block";
+        displayArea.innerHTML = `<div class="note-box" style="border-left-color: #ef4444;">Data file for <b>Base ${baseVal}</b> is missing or not loaded correctly.</div>`;
+      }
       return;
     }
 
     selectedVersionData = versionDataMap[baseVal];
-    
-    if (selectedVersionData.brands) {
+
+    if (selectedVersionData && selectedVersionData.brands) {
       Object.keys(selectedVersionData.brands).forEach(brand => {
         const opt = document.createElement("option");
         opt.value = brand;
@@ -435,7 +440,7 @@
     }
 
     const platforms = selectedVersionData.brands[brandVal].platforms;
-    
+
     if (platforms) {
       Object.keys(platforms).forEach(platform => {
         const opt = document.createElement("option");
@@ -455,7 +460,7 @@
     const display = document.getElementById("displayArea");
     display.innerHTML = "";
 
-    if (!brandVal || !platformVal) {
+    if (!brandVal || !platformVal || !selectedVersionData?.brands?.[brandVal]?.platforms?.[platformVal]) {
       display.style.display = "none";
       return;
     }
@@ -480,7 +485,7 @@
           </thead>
           <tbody>`;
       platformData.models.forEach(m => {
-        html += `<tr><td>${m.model}</td><td>${m.description}</td><td>${m.name}</td></tr>`;
+        html += `<tr><td>${m.model || ''}</td><td>${m.description || ''}</td><td>${m.name || ''}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -494,8 +499,8 @@
             <tr><th colspan="2" class="header-cyan">${emvHeader}</th></tr>
           </thead>
           <tbody>
-            <tr><td>EMV Contact</td><td>${emvData.contact}</td></tr>
-            <tr><td>EMV Contactless</td><td>${emvData.contactless}</td></tr>
+            <tr><td>EMV Contact</td><td>${emvData.contact || ''}</td></tr>
+            <tr><td>EMV Contactless</td><td>${emvData.contactless || ''}</td></tr>
           </tbody>
         </table>`;
     }
@@ -515,11 +520,11 @@
           <tbody>`;
       platformData.emvStatus.forEach(row => {
         html += `<tr>
-          <td>${row.mode}</td>
-          <td>${row.firmware}</td>
-          <td>${row.reader}</td>
-          <td>${row.readerFirmware}</td>
-          <td>${row.buildRevision}</td>
+          <td>${row.mode || ''}</td>
+          <td>${row.firmware || ''}</td>
+          <td>${row.reader || ''}</td>
+          <td>${row.readerFirmware || ''}</td>
+          <td>${row.buildRevision || ''}</td>
         </tr>`;
       });
       html += `</tbody></table>`;
@@ -534,7 +539,7 @@
           </thead>
           <tbody>`;
       platformData.supportedOptions.forEach(row => {
-        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -549,7 +554,7 @@
           </thead>
           <tbody>`;
       platformData.debit.forEach(row => {
-        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -563,7 +568,7 @@
           </thead>
           <tbody>`;
       platformData.crinds.forEach(row => {
-        html += `<tr><td>${row.option}</td><td>${row.minimumVersion}</td></tr>`;
+        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -582,7 +587,7 @@
             </thead>
             <tbody>`;
         matchedSoftware.forEach(ds => {
-          html += `<tr><td>${ds.dispenser}</td><td>${ds.description}</td><td>${ds.version}</td></tr>`;
+          html += `<tr><td>${ds.dispenser || ''}</td><td>${ds.description || ''}</td><td>${ds.version || ''}</td></tr>`;
         });
         html += `</tbody></table>`;
 
