@@ -12,6 +12,7 @@ const BASE_55_02_04_DATA = {
             { option: "EMV", minimumVersion: "XXXXXX.10.10.07" },
             { option: "Visa Fleet 2.0/WEX 4.1", minimumVersion: "XXXXXX.10.10.11" }
           ],
+          debit: [],
           notes: [
             "The \"XXXXXX\" number is based on hardware revision.",
             "Upgrade to EMV version XXXXXX.10.10.09, if the site is experiencing \"Remove Card\" message remaining on the display after the card has been removed until timeout."
@@ -30,6 +31,8 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "DCT (Verifone Everest Card Reader)": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Non-debit", minimumVersion: "1.02.02" },
             { option: "SDES (DUKPT)", minimumVersion: "1.02.02" }
@@ -102,6 +105,8 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Z80 Logic Board": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Non-Debit", minimumVersion: "50.2.4" }
           ],
@@ -110,6 +115,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Encrypting PIN Pad (EPP) with Advanced GSM": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Advanced GSM", minimumVersion: "See CRIND versions below." },
             { option: "Graphics", minimumVersion: "See CRIND versions below." },
@@ -133,6 +139,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Advantage CRIND (Z180 Logic Board)": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "60.9.40" },
             { option: "Graphics: Monochrome", minimumVersion: "609.40" },
@@ -151,6 +158,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Encore 300": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "60.9.40" },
             { option: "Graphics: Monochrome", minimumVersion: "609.40" },
@@ -169,6 +177,9 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Encore 500/Eclipse": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
+          debit: [],
           notes: [
             "Contactless (RFID), TDES and M/S are not supported."
           ]
@@ -198,6 +209,7 @@ const BASE_55_02_04_DATA = {
             { option: "EMV Firmware (Supports Visa Fleet 2.0 Support)", minimumVersion: "R3.2.28c" },
             { option: "EMV Adapter (Supports Visa Fleet 2.0 Support)", minimumVersion: "01.08.0132" }
           ],
+          debit: [],
           notes: [
             "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
             "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01."
@@ -208,6 +220,7 @@ const BASE_55_02_04_DATA = {
     "Tokheim": {
       platforms: {
         "Premier B": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "TED", minimumVersion: "v300 or v400" }
@@ -224,6 +237,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Premier C": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "TED", minimumVersion: "v300 or v400" }
@@ -240,7 +254,7 @@ const BASE_55_02_04_DATA = {
         }
       }
     },
-    "Dresser/Wayne": {
+    "Dresser / Wayne": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. When connecting the Commander Ethernet cable to a DCR Serial Converter for Outdoor EMV, the wires routed from the converter to the DCR must be twisted pair.",
       dispenserSoftwareNotes: [
         "For Model V490D1/U (Vista 1V), the version must be 47.",
@@ -262,6 +276,7 @@ const BASE_55_02_04_DATA = {
             { option: "Visa Fleet 2.0 / WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX", minimumVersion: "1.22.5.326" }
           ],
+          debit: [],
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
             "Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne."
@@ -271,9 +286,17 @@ const BASE_55_02_04_DATA = {
           emvSupport: { contact: "Certified", contactless: "Certified" },
           emvStatus: [
             { mode: "NFC Mode > Contactless", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" }
           ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            ]
+          },
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "Graphics", minimumVersion: "3.1.203.1260" },
@@ -296,10 +319,19 @@ const BASE_55_02_04_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless", firmware: "2.8.203.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21031901" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150", readerFirmware: "261EA02", buildRevision: "21032201" },
-            { mode: "Visa Fleet 2.0/WEX 4.1 Support", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "19020101" }
           ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            ]
+          },
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "2.5.15.0" },
             { option: "Graphics", minimumVersion: "2.5.15.0" },
@@ -318,10 +350,12 @@ const BASE_55_02_04_DATA = {
         },
         "Anthem": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
-            { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
-            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
+            { option: "Contact/Contactless EMV Support", minimumVersion: "3.1.207.430" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
+            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX (Visa Fleet 2.0/WEX 4.1 Support)", minimumVersion: "1.22.5.326" }
           ],
           notes: [
@@ -332,10 +366,12 @@ const BASE_55_02_04_DATA = {
         },
         "Anthem (AX12, AX27)": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
-            { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
-            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
+            { option: "Contact/Contactless EMV Support", minimumVersion: "3.1.207.430" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
+            { option: "Visa Fleet 2.0/WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX (Visa Fleet 2.0/WEX 4.1 Support)", minimumVersion: "1.22.5.326" }
           ],
           notes: [
@@ -345,6 +381,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "iX — Blue Board": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "1.3.8.0" },
             { option: "Graphics", minimumVersion: "1.3.8.0" },
@@ -359,6 +396,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Ovation / Ovation 2 with qCAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Graphics", minimumVersion: "206.00" },
             { option: "Scanner", minimumVersion: "206.00" }
@@ -372,6 +410,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Vista3V": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "103.00" },
             { option: "Graphics", minimumVersion: "103.00" },
@@ -387,6 +426,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Dual CAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "103.00" },
             { option: "Graphics", minimumVersion: "103.00" },
@@ -402,6 +442,7 @@ const BASE_55_02_04_DATA = {
           ]
         },
         "Legacy CAT": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "64.00" },
             { option: "Graphics", minimumVersion: "64.00" },
