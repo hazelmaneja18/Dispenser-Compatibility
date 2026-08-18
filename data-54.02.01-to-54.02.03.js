@@ -1,5 +1,5 @@
-const BASE_54_02_01_DATA = {
-  version: "54.02.01",
+const BASE_54_02_01_TO_54_02_03_DATA = {
+  version: "Base 54.02.01 to 54.02.03",
   brands: {
     "Bennett": {
       generalNote: 'See <a href="https://www.vfne.co/verifone-petro-emv-updates" target="_blank">https://www.vfne.co/verifone-petro-emv-updates</a> for Outdoor EMV Implementation Status updates.',
