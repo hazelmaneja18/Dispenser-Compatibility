@@ -314,7 +314,6 @@
           <option value="55.02.10-to-55.02.11">Base 55.02.10 to 55.02.11</option>
           <option value="56.00.00-to-56.01.00">Base 56.00.00 to 56.01.00</option>
           <option value="56.01.00-to-56.03.02">Base 56.01.00 to 56.03.02</option>
-
         </select>
       </div>
 
@@ -409,7 +408,7 @@
       });
       brandSelect.disabled = false;
     } else {
-      brandSelect.disabled = true;
+      brandSelect.disabled = false;
     }
   }
 
@@ -442,6 +441,53 @@
     }
   }
 
+  // Helper function to dynamically generate HTML tables from array of objects
+  function generateDynamicTable(dataArray, customHeaders = null, tableHeaderHtml = '') {
+    if (!dataArray || !Array.isArray(dataArray) || dataArray.length === 0) return '';
+
+    // Collect all unique keys across all objects in the array
+    const keys = [];
+    dataArray.forEach(item => {
+      if (item && typeof item === 'object') {
+        Object.keys(item).forEach(k => {
+          if (!keys.includes(k) && k !== 'modelMatch') {
+            keys.push(k);
+          }
+        });
+      }
+    });
+
+    if (keys.length === 0) return '';
+
+    // Format keys into camelCase/PascalCase user-friendly labels if custom headers aren't supplied
+    const formatKeyLabel = (key) => {
+      const result = key.replace(/([A-Z])/g, ' $1');
+      return result.charAt(0).toUpperCase() + result.slice(1);
+    };
+
+    let html = tableHeaderHtml;
+    html += `<table><thead><tr>`;
+
+    if (customHeaders && Array.isArray(customHeaders)) {
+      customHeaders.forEach(h => html += `<th>${h}</th>`);
+    } else {
+      keys.forEach(k => html += `<th>${formatKeyLabel(k)}</th>`);
+    }
+
+    html += `</tr></thead><tbody>`;
+
+    dataArray.forEach(row => {
+      html += `<tr>`;
+      keys.forEach(k => {
+        html += `<td>${row[k] !== undefined && row[k] !== null ? row[k] : ''}</td>`;
+      });
+      html += `</tr>`;
+    });
+
+    html += `</tbody></table>`;
+    return html;
+  }
+
   function renderDetails() {
     const brandVal = document.getElementById("brandSelect").value;
     const platformVal = document.getElementById("platformSelect").value;
@@ -466,16 +512,7 @@
     html += `<div class="header-black">${brandVal}: ${platformVal}</div>`;
 
     if (platformData.models) {
-      html += `
-        <table>
-          <thead>
-            <tr><th>Model Number</th><th>Description</th><th>Name</th></tr>
-          </thead>
-          <tbody>`;
-      platformData.models.forEach(m => {
-        html += `<tr><td>${m.model || ''}</td><td>${m.description || ''}</td><td>${m.name || ''}</td></tr>`;
-      });
-      html += `</tbody></table>`;
+      html += generateDynamicTable(platformData.models);
     }
 
     const emvData = platformData.emvSupport || platformData.emvCertification;
@@ -494,71 +531,23 @@
     }
 
     if (platformData.emvStatus) {
-      html += `
-        <table>
-          <thead>
-            <tr>
-              <th>EMV Status</th>
-              <th>Firmware</th>
-              <th>Contactless Reader</th>
-              <th>Contactless Reader Firmware</th>
-              <th>Contactless Build Revision</th>
-            </tr>
-          </thead>
-          <tbody>`;
-      platformData.emvStatus.forEach(row => {
-        html += `<tr>
-          <td>${row.mode || ''}</td>
-          <td>${row.firmware || ''}</td>
-          <td>${row.reader || ''}</td>
-          <td>${row.readerFirmware || ''}</td>
-          <td>${row.buildRevision || ''}</td>
-        </tr>`;
-      });
-      html += `</tbody></table>`;
+      html += generateDynamicTable(platformData.emvStatus);
     }
 
     if (platformData.supportedOptions) {
       const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-      html += `
-        <table>
-          <thead>
-            <tr><th>Supported Options</th><th>${header}</th></tr>
-          </thead>
-          <tbody>`;
-      platformData.supportedOptions.forEach(row => {
-        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
-      });
-      html += `</tbody></table>`;
+      html += generateDynamicTable(platformData.supportedOptions, ["Supported Options", header]);
     }
 
     if (platformData.debit) {
       const header = platformData.supportedOptionsHeader || "Recommended Minimum Version";
-      html += `<div class="header-black">Debit</div>`;
-      html += `
-        <table>
-          <thead>
-            <tr><th>Supported Options</th><th>${header}</th></tr>
-          </thead>
-          <tbody>`;
-      platformData.debit.forEach(row => {
-        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
-      });
-      html += `</tbody></table>`;
+      const headerTitle = `<div class="header-black">Debit</div>`;
+      html += generateDynamicTable(platformData.debit, ["Supported Options", header], headerTitle);
     }
 
     if (platformData.crinds) {
-      html += `<div class="header-black">CRINDs</div>`;
-      html += `
-        <table>
-          <thead>
-            <tr><th>CRIND Model</th><th>Recommended Minimum Version</th></tr>
-          </thead>
-          <tbody>`;
-      platformData.crinds.forEach(row => {
-        html += `<tr><td>${row.option || ''}</td><td>${row.minimumVersion || ''}</td></tr>`;
-      });
-      html += `</tbody></table>`;
+      const headerTitle = `<div class="header-black">CRINDs</div>`;
+      html += generateDynamicTable(platformData.crinds, ["CRIND Model", "Recommended Minimum Version"], headerTitle);
     }
 
     if (brandData.dispenserSoftware) {
@@ -567,17 +556,8 @@
       );
 
       if (matchedSoftware.length > 0) {
-        html += `<div class="header-black">Dispensers Supported (${brandVal})</div>`;
-        html += `
-          <table>
-            <thead>
-              <tr><th>Dispenser</th><th>Description</th><th>Version</th></tr>
-            </thead>
-            <tbody>`;
-        matchedSoftware.forEach(ds => {
-          html += `<tr><td>${ds.dispenser || ''}</td><td>${ds.description || ''}</td><td>${ds.version || ''}</td></tr>`;
-        });
-        html += `</tbody></table>`;
+        const headerTitle = `<div class="header-black">Dispensers Supported (${brandVal})</div>`;
+        html += generateDynamicTable(matchedSoftware, null, headerTitle);
 
         if (brandData.dispenserSoftwareNotes) {
           html += `<div class="note-box"><b>Dispenser Notes:</b><ul>`;
