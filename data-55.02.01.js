@@ -12,6 +12,7 @@ const BASE_55_02_01_DATA = {
             { option: "EMV", minimumVersion: "XXXXXX.10.10.07" },
             { option: "Visa Fleet 2.0/WEX 4.1", minimumVersion: "XXXXXX.10.10.11" }
           ],
+          debit: [],
           notes: [
             "The \"XXXXXX\" number is based on hardware revision.",
             "Upgrade to EMV version XXXXXX.10.10.09, if the site is experiencing \"Remove Card\" message remaining on the display after the card has been removed until timeout."
@@ -30,6 +31,8 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "DCT (Verifone Everest Card Reader)": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Non-debit", minimumVersion: "1.02.02" },
             { option: "SDES (DUKPT)", minimumVersion: "1.02.02" }
@@ -102,6 +105,8 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Z80 Logic Board": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Non-Debit", minimumVersion: "50.2.4" }
           ],
@@ -110,6 +115,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Encrypting PIN Pad (EPP) with Advanced GSM": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Advanced GSM", minimumVersion: "See CRIND versions below." },
             { option: "Graphics", minimumVersion: "See CRIND versions below." },
@@ -133,6 +139,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Advantage CRIND (Z180 Logic Board)": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "60.9.40" },
             { option: "Graphics: Monochrome", minimumVersion: "609.40" },
@@ -151,6 +158,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Encore 300": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "60.9.40" },
             { option: "Graphics: Monochrome", minimumVersion: "609.40" },
@@ -169,6 +177,9 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Encore 500/Eclipse": {
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
+          debit: [],
           notes: [
             "Contactless (RFID), TDES and M/S are not supported."
           ]
@@ -198,6 +209,7 @@ const BASE_55_02_01_DATA = {
             { option: "EMV Firmware (Supports Visa Fleet 2.0 Support)", minimumVersion: "R3.2.28c" },
             { option: "EMV Adapter (Supports Visa Fleet 2.0 Support)", minimumVersion: "01.08.0132" }
           ],
+          debit: [],
           notes: [
             "In base version 55.00.01, Shell support for Invenco dispensers was classified as Beta (No).",
             "Full support (Yes) for Invenco dispensers on Shell was introduced in version 55.01.01."
@@ -208,6 +220,7 @@ const BASE_55_02_01_DATA = {
     "Tokheim": {
       platforms: {
         "Premier B": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "TED", minimumVersion: "v300 or v400" }
@@ -224,6 +237,7 @@ const BASE_55_02_01_DATA = {
           ]
         },
         "Premier C": {
+          supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
             { option: "TED", minimumVersion: "v300 or v400" }
@@ -240,7 +254,7 @@ const BASE_55_02_01_DATA = {
         }
       }
     },
-    "Dresser/Wayne": {
+    "Dresser / Wayne": {
       generalNote: "See https://www.vfne.co/verifone-petro-emv-updates for Outdoor EMV Implementation Status updates. When connecting the Commander Ethernet cable to a DCR Serial Converter for Outdoor EMV, the wires routed from the converter to the DCR must be twisted pair.",
       dispenserSoftwareNotes: [
         "For Model V490D1/U (Vista 1V), the version must be 47.",
@@ -262,6 +276,7 @@ const BASE_55_02_01_DATA = {
             { option: "Visa Fleet 2.0 / WEX 4.1 Support", minimumVersion: "3.1.212.1130" },
             { option: "ANTX", minimumVersion: "1.22.5.326" }
           ],
+          debit: [],
           notes: [
             "Cash Acceptors, Graphics, TDES, and Master Session are not supported.",
             "Prior to upgrade to Wayne EMV software, please check the minimum version with Wayne."
@@ -335,6 +350,8 @@ const BASE_55_02_01_DATA = {
         },
         "Anthem": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
@@ -348,6 +365,8 @@ const BASE_55_02_01_DATA = {
         },
         "Anthem (AX12, AX27)": {
           emvSupport: { contact: "Certified", contactless: "Certified" },
+          supportedOptionsHeader: "Minimum Version",
+          supportedOptions: [],
           debit: [
             { option: "Contact/Contactless EMV", minimumVersion: "3.1.207.430" },
             { option: "ANTX", minimumVersion: "1.20.4.130" },
