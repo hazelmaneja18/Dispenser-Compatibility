@@ -418,5 +418,3 @@ const BASE_56_01_00_TO_56_03_02_DATA = {
     }
   }
 };
-
-export default BASE_56_02_00_DATA;
