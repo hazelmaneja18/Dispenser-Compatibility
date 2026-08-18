@@ -172,34 +172,23 @@ const BASE_54_02_04_DATA = {
     "Invenco": {
       generalNote: 'See <a href="https://www.vfne.co/verifone-petro-emv-updates" target="_blank">https://www.vfne.co/verifone-petro-emv-updates</a> for Outdoor EMV Implementation Status updates.<br>Invenco / GVR DCR products have been rebranded as FlexPay 6. FlexPay 6 is not supported in all applications.',
       platforms: {
-        'FlexPay 6 All-In-One 9" A2-09 (AKA, G6-400)': {
+        "Invenco by GVR – FlexPay 6 Outdoor Payment Terminals": {
+          models: [
+            { model: "G6-300", description: '5" Compact All-In-One', name: "FlexPay 6 A1-05" },
+            { model: "G6-500", description: '5" Compact All-In-One', name: "FlexPay 6 A2-05" },
+            { model: "G6-400", description: '9" All-In-One', name: "FlexPay 6 A2-09" },
+            { model: "G7-100", description: '15" Modular', name: "FlexPay 6 M1-15" },
+            { model: "G6-500 15D", description: '15" Modular Next Generation', name: "FlexPay 6 M2-15" }
+          ],
           emvCertification: {
             contact: "Certified",
             contactless: "Certified"
           },
           supportedOptions: [
-            { option: "EMV Firmware", minimumVersion: "3.2.21" },
-            { option: "EMV Adapter", minimumVersion: "1.06.0159" }
-          ]
-        },
-        'FlexPay 6 All-In-One 5" A1-05 (AKA, G6-300)': {
-          emvCertification: {
-            contact: "Certified",
-            contactless: "Certified"
-          },
-          supportedOptions: [
-            { option: "EMV Firmware", minimumVersion: "3.2.21" },
-            { option: "EMV Adapter", minimumVersion: "1.06.0159" }
-          ]
-        },
-        'FlexPay 6 Modular 15" M1-15 (AKA, G7-100)': {
-          emvCertification: {
-            contact: "Certified",
-            contactless: "Certified"
-          },
-          supportedOptions: [
-            { option: "EMV Firmware", minimumVersion: "3.2.21" },
-            { option: "EMV Adapter", minimumVersion: "1.06.0159" }
+            { option: "EMV Firmware (Non-Fleet 2.0)", minimumVersion: "3.2.21" },
+            { option: "EMV Adapter (Non-Fleet 2.0)", minimumVersion: "1.06.0159" },
+            { option: "EMV Firmware (Supports Visa Fleet 2.0 Support)", minimumVersion: "R3.2.28c" },
+            { option: "EMV Adapter (Supports Visa Fleet 2.0 Support)", minimumVersion: "01.08.0132" }
           ]
         }
       }
