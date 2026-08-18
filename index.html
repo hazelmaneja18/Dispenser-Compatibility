@@ -445,7 +445,6 @@
   function generateDynamicTable(dataArray, customHeaders = null, tableHeaderHtml = '') {
     if (!dataArray || !Array.isArray(dataArray) || dataArray.length === 0) return '';
 
-    // Collect all unique keys across all objects in the array
     const keys = [];
     dataArray.forEach(item => {
       if (item && typeof item === 'object') {
@@ -459,7 +458,6 @@
 
     if (keys.length === 0) return '';
 
-    // Format keys into camelCase/PascalCase user-friendly labels if custom headers aren't supplied
     const formatKeyLabel = (key) => {
       const result = key.replace(/([A-Z])/g, ' $1');
       return result.charAt(0).toUpperCase() + result.slice(1);
@@ -532,6 +530,12 @@
 
     if (platformData.emvStatus) {
       html += generateDynamicTable(platformData.emvStatus);
+    }
+
+    // Process the missing Visa Fleet 2.0 / WEX 4.1 Support table
+    if (platformData.visaFleetSupportSection) {
+      const section = platformData.visaFleetSupportSection;
+      html += generateDynamicTable(section.rows, section.headers);
     }
 
     if (platformData.supportedOptions) {
