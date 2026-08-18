@@ -273,10 +273,14 @@ const BASE_55_02_01_DATA = {
             { mode: "NFC Mode > Contactless", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.203.1260", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21031801" }
           ],
-          visaFleetSupport: [
-            { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
-          ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "3.1.207.430", reader: "C150S", readerFirmware: "26100A02", buildRevision: "21122402" }
+            ]
+          },
           supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "N/A" },
@@ -302,12 +306,16 @@ const BASE_55_02_01_DATA = {
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
             { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.105.109", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "19020101" }
           ],
-          visaFleetSupport: [
-            { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
-            { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
-            { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
-          ],
+          visaFleetSupportSection: {
+            title: "Visa Fleet 2.0 / WEX 4.1 Support",
+            headers: ["Visa Fleet 2.0 / WEX 4.1 Support", "Firmware", "Contactless Reader", "Contactless Reader Firmware", "Contactless Build Revision"],
+            rows: [
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150", readerFirmware: "2610EA02", buildRevision: "21032201" },
+              { mode: "NFC Mode > Contactless Disabled", firmware: "2.8.205.9", reader: "C150S_NP", readerFirmware: "2610FA02", buildRevision: "21110301" }
+            ]
+          },
           supportedOptionsHeader: "Minimum Version",
           supportedOptions: [
             { option: "Cash Acceptors", minimumVersion: "2.5.15.0" },
